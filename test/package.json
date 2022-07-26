@@ -1,0 +1,10 @@
+{
+  "name": "test",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {},
+  "dependencies": {
+    "vue": "^3.0.0-rc.10"
+  }
+}
