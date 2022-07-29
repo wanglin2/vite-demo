@@ -192,8 +192,8 @@ const intercepts = {
     let descriptor = null;
     // 如果存在缓存则直接使用缓存
     let cached = vueCache.get(removeQuery(req.url));
-    if (cached && cached.descriptor) {
-      descriptor = cached.descriptor;
+    if (cached) {
+      descriptor = cached;
     } else {
       // 否则进行解析，并且将解析结果进行缓存
       descriptor = parseVue(vue).descriptor;
@@ -249,7 +249,8 @@ const intercepts = {
 
 // 创建WebSocket服务
 const createWebSocket = () => {
-  const wss = new WebSocket.Server({ noServer: true });
+  // 创建一个服务实例
+  const wss = new WebSocket.Server({ noServer: true });// 不用额外创建http服务，直接使用我们自己创建的http服务
 
   server.on("upgrade", (req, socket, head) => {
     if (req.headers["sec-websocket-protocol"] === "vite-hmr") {
@@ -357,7 +358,7 @@ const handleVueReload = (file) => {
   if (!isEqualBlock(descriptor.script, prevDescriptor.script)) {
     return sendReload();
   }
-  // template发送了改变发送rerender事件
+  // template改变了发送rerender事件
   if (!isEqualBlock(descriptor.template, prevDescriptor.template)) {
     return sendRerender();
   }

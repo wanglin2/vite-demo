@@ -1,3 +1,4 @@
+// vite-hmr代表自定义的协议字符串
 const socket = new WebSocket("ws://localhost:3000", "vite-hmr");
 
 socket.addEventListener("message", async ({ data }) => {
