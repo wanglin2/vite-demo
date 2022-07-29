@@ -1,11 +1,20 @@
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from "./components/HelloWorld.vue";
+import test from "./test.js";
 
 export default {
   components: {
-    HelloWorld
-  }
-}
+    HelloWorld,
+  },
+  data() {
+    return {
+      text: "",
+    };
+  },
+  mounted() {
+    this.text = test();
+  },
+};
 </script>
 
 <template>
