@@ -4,6 +4,10 @@
 
 ```bash
 cd vite-demo
+cd test
+npm i
+cd ..
+cd vite
 npm i
 node app.js
 ```
